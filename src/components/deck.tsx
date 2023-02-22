@@ -1,5 +1,5 @@
-import { Card, CardGroup } from 'semantic-ui-react';
-import { RoomCardReading, TarotCard } from '../types/tarot-card';
+import { Card } from 'semantic-ui-react';
+import { RoomCardReading } from '../types/tarot-card';
 
 const Deck = (props: { selectCard : any, roomCardReading? : RoomCardReading }) => {
 

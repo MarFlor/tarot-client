@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { io, Socket } from "socket.io-client";
 import { RoomCardReading, RoomDetails } from '../types/tarot-card';
 
-import { Button, Card, Icon, Image, List} from 'semantic-ui-react';
+import { Button, Icon, Image, List} from 'semantic-ui-react';
 import { Deck } from './deck';
 
 const Room = (props: { leaveRoom: any; selectCard : any, roomName : string; toRoomMsg : string, roomDetails? : RoomDetails, roomCardReading? : RoomCardReading }) => {

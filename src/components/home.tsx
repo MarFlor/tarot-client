@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { io, Socket } from "socket.io-client";
 import { ServerToClientEvents, ClientToServerEvents, ClientSocketDetails } from '../types/io-client';
 
-import { Button, Icon, Label, Message} from 'semantic-ui-react';
+import { Button, Icon, Message} from 'semantic-ui-react';
 import { Room } from './room';
 import { RoomCardReading, RoomDetails } from '../types/tarot-card';
 
@@ -30,12 +30,13 @@ const Home = () => {
 
     useEffect(() => {
         
+        const msgs = serverMsg;
         socket.on('socketDetails', (details : ClientSocketDetails) => {
             
             console.log("socketDetails -> ", details);
             appendMessage(JSON.stringify(details))
             
-            const msgs = serverMsg;
+            
             msgs.push(JSON.stringify(details))
             setServerMsg(msgs)
 
@@ -71,7 +72,7 @@ const Home = () => {
             console.log("client connect -> ", socket.id)
         });
         
-    }, []);
+    }, [serverMsg]);
 
     
     const enterRoom = (roomName: string, socket : Socket) => {

@@ -21,7 +21,7 @@ const Deck = (props: { selectCard : any, roomCardReading? : RoomCardReading }) =
             <Card.Group itemsPerRow={10}>            
 
                 {roomCardReading && roomCardReading.remainingShuffeledCards.map((item, key) =>    
-                    <Card key={key} image={item.picUrl} onClick={() => selectCard(roomCardReading.roomName, item.id)}></Card>
+                    <Card key={key} image='img/cardback.jpg' onClick={() => selectCard(roomCardReading.roomName, item.id)}></Card>
                 )}
 
             </Card.Group>

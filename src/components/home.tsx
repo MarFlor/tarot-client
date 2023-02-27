@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { io, Socket } from "socket.io-client";
 import { ServerToClientEvents, ClientToServerEvents, ClientSocketDetails } from '../types/io-client';
 
-import { Button, Icon, Message} from 'semantic-ui-react';
+import { Button, Card, Icon, Message} from 'semantic-ui-react';
 import { Room } from './room';
 import { RoomCardReading, RoomDetails } from '../types/tarot-card';
 
+
+console.log("SOCKET_IO_SERVER_URL", process.env.USER_SERVICE_URL ?? '')
 const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io("https://tarot-server.azurewebsites.net/");
 
 const Home = () => {
@@ -80,7 +82,6 @@ const Home = () => {
         socket.emit("enter-room", roomName);
         setinRoom(true);
         setinRoomName(roomName);
-        setToRoomMsg("Has entrado a la sala " + roomName);
 
         socket.emit("getRoomDetails", roomName);
     }
@@ -101,28 +102,44 @@ const Home = () => {
 
         return (
         <div>
-            <h3>Escoge cualquier sala astral</h3>
+            <Message size='large'>Para iniciar tu lectura escoge una sala</Message>
+            
+            <Card.Group itemsPerRow={2}>
+                <Card key={1}> 
+                    <Button size='massive' icon labelPosition='left' color='teal' onClick={() => enterRoom("Mercurio", socket)}>
+                        <Icon name='mercury' />
+                        Mercurio
+                        </Button>
+                </Card>
 
-            <Button icon labelPosition='left' color='teal' onClick={() => enterRoom("Mercurio", socket)}>
-                <Icon name='mercury' />
-                Mercurio
-            </Button>
-            <Button icon labelPosition='left' color='yellow' onClick={() => enterRoom("Sol", socket)}>
-                <Icon name='sun' />
-                Sol
-            </Button>
-            <Button icon labelPosition='left' color='purple' onClick={() => enterRoom("Marte", socket)}>
-                <Icon name='mars' />
-                Marte
-            </Button>
-            <Button icon labelPosition='left' color='pink' onClick={() => enterRoom("Venus", socket)}>
-                <Icon name='venus' />
-                Venus
-            </Button>
-            <Button icon labelPosition='left' color='grey' onClick={() => enterRoom("Luna", socket)}>
-                <Icon name='moon' />
-                Luna
-            </Button>
+                <Card key={2}>
+                    <Button size='massive' icon labelPosition='left' color='yellow' onClick={() => enterRoom("Sol", socket)}>
+                        <Icon name='sun' />
+                        Sol
+                    </Button>
+                </Card>
+
+                <Card key={3}>
+                    <Button size='massive' icon labelPosition='left' color='purple' onClick={() => enterRoom("Marte", socket)}>
+                        <Icon name='mars' />
+                        Marte
+                    </Button>
+                </Card>
+
+                <Card key={4}>
+                    <Button size='massive' icon labelPosition='left' color='pink' onClick={() => enterRoom("Venus", socket)}>
+                        <Icon name='venus' />
+                        Venus
+                    </Button>
+                </Card>
+
+                <Card key={5}>
+                    <Button size='massive' icon labelPosition='left' color='grey' onClick={() => enterRoom("Luna", socket)}>
+                        <Icon name='moon' />
+                        Luna
+                    </Button>
+                </Card>
+            </Card.Group>
         </div>
         )
     }
@@ -130,25 +147,21 @@ const Home = () => {
     return (
         <div>
             <h1>
-                Namaste <br />{clientSockedDetails?.nick}
+                {clientSockedDetails?.nick}
             </h1>
-            <Message size='mini'>{clientSockedDetails?.id}</Message>
-
-            {inRoom === false ?
-             <RoomButtons /> : <Room leaveRoom={leaveRoom} selectCard={selectCard} roomName={inRoomName} toRoomMsg={toRoomMsg} roomDetails={roomDetails} roomCardReading={roomCardReading} /> 
-            }
             
-            <p>
-                {serverMsg.map((item, index) => 
-                    {
-                        return <li key={index}>{item}</li>
-                    })
-                }
+            {inRoom === false ?
+              <RoomButtons /> : <Room leaveRoom={leaveRoom} selectCard={selectCard} roomName={inRoomName} toRoomMsg={toRoomMsg} roomDetails={roomDetails} roomCardReading={roomCardReading} /> 
+            }
+
+
+            <Message size='tiny'>
                 {JSON.stringify(serverMsg)}
+            </Message>
+            <p>
+                
             </p>
-            <hr/>
-            <div id='messagecontent' />
-            <hr/>            
+                
         </div>
     )
 }

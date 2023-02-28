@@ -6,8 +6,7 @@ import { Button, Card, Header, Icon, Message, Image} from 'semantic-ui-react';
 import { Room } from './room';
 import { RoomCardReading, RoomDetails } from '../types/tarot-card';
 
-
-const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(process.env.REACT_APP_SOCKET_URL ?? '');
+const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io('https://tarot-server.azurewebsites.net/');
 
 const Home = () => {
 
@@ -34,7 +33,6 @@ const Home = () => {
         const msgs = serverMsg;
         socket.on('socketDetails', (details : ClientSocketDetails) => {
             
-            console.log("socketDetails -> ", details);
             appendMessage(JSON.stringify(details))
             
             
@@ -46,31 +44,26 @@ const Home = () => {
         
         socket.on('enteredRoomDetails', (details : RoomDetails) => {
             
-            console.log("enteredRoomDetails -> ", details);
             setRoomDetails(details)
         });
 
         socket.on('remainingShuffeledCards', (reading : RoomCardReading) => {
             
-            console.log("remainingShuffeledCards -> ", reading);
             setRoomCardReading(reading)
         });
 
         socket.on('toRoomMessage', (msg : string) => {
             
-            console.log("toRoomMessage -> ", msg);
             setToRoomMsg(msg)
         });
 
         socket.on('message', function(msg) {
             
-            console.log("message -> ", msg);
             appendMessage(JSON.stringify(msg))
         });
 
         socket.on('connect', () => {
             
-            console.log("client connect -> ", socket.id)
         });
         
     }, [serverMsg]);

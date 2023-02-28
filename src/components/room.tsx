@@ -6,9 +6,6 @@ import { Deck } from './deck';
 const Room = (props: {leaveRoom: any; selectCard : any, roomName : string; toRoomMsg : string, roomDetails? : RoomDetails, roomCardReading? : RoomCardReading }) => {
 
     const {leaveRoom,  selectCard, roomName, toRoomMsg, roomDetails, roomCardReading} = props;
-    
-    console.log("room comp details", roomDetails)
-    console.log("roomCardReading", roomCardReading)
 
     const cardsCount = roomCardReading?.remainingShuffeledCards ? roomCardReading?.remainingShuffeledCards.length : 0
     const remainingQuestions = Math.floor(cardsCount / 3)

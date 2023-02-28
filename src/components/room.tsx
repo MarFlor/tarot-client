@@ -1,9 +1,9 @@
 import { RoomCardReading, RoomDetails } from '../types/tarot-card';
 
-import { Button, Icon, Image, List} from 'semantic-ui-react';
+import { Button, Divider, Icon, Image, List} from 'semantic-ui-react';
 import { Deck } from './deck';
 
-const Room = (props: { leaveRoom: any; selectCard : any, roomName : string; toRoomMsg : string, roomDetails? : RoomDetails, roomCardReading? : RoomCardReading }) => {
+const Room = (props: {leaveRoom: any; selectCard : any, roomName : string; toRoomMsg : string, roomDetails? : RoomDetails, roomCardReading? : RoomCardReading }) => {
 
     const {leaveRoom,  selectCard, roomName, toRoomMsg, roomDetails, roomCardReading} = props;
     
@@ -12,29 +12,34 @@ const Room = (props: { leaveRoom: any; selectCard : any, roomName : string; toRo
 
     const cardsCount = roomCardReading?.remainingShuffeledCards ? roomCardReading?.remainingShuffeledCards.length : 0
     const remainingQuestions = Math.floor(cardsCount / 3)
-
+    
     return (
         <div>
-            <Button icon labelPosition='left' onClick={() => leaveRoom(roomName)}>
-                <Icon name='mercury' />
-                Salir de la sala {roomName}
+           
+           <Button size='tiny' icon color='grey' labelPosition='left' onClick={() => leaveRoom(roomName)}>
+                <Icon name='sign-out' />
+                Salir de {roomName}
             </Button>
             
             <p>{toRoomMsg}</p>
-            
-            <h2>Quedan {remainingQuestions} de {78 / 3} preguntas</h2>
-            <List horizontal size="mini"> 
+
+            <List horizontal size="large"> 
                 {roomDetails && roomDetails.clients.map((item, key) =>    
-                    <List.Item key={item.id}>
-                    <Image avatar src='https://react.semantic-ui.com/images/avatar/small/helen.jpg' />
+                    
+                    <List.Item key={key}>
+                    <Image avatar src={item.avatar} />
                     <List.Content>
-                        <List.Header>{item.nick} ({item.id})</List.Header>
+                        <List.Header>{item.nick}</List.Header>
                     </List.Content>
                     </List.Item>
+
                 )}
             </List>
-            <br />
-            <br />
+            
+            <Divider horizontal>
+                {remainingQuestions} de {78 / 3} preguntas
+            </Divider>
+            
             <Deck selectCard={selectCard} roomCardReading={roomCardReading} ></Deck>
 
         </div>

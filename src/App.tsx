@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="App">
-       <Container fluid>
+       <Container>
           <Home />
       </Container>
     </div>

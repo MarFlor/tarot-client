@@ -49,7 +49,7 @@ const Room = (props: {leaveRoom: any; selectCard : any, roomName : string; toRoo
             </Divider>
             
             <Deck selectCard={selectCard} roomCardReading={roomCardReading} ></Deck>
-
+            <div>{toRoomMsg}</div>
         </div>
     )
 

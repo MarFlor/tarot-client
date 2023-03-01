@@ -9,17 +9,28 @@ const Room = (props: {leaveRoom: any; selectCard : any, roomName : string; toRoo
 
     const cardsCount = roomCardReading?.remainingShuffeledCards ? roomCardReading?.remainingShuffeledCards.length : 0
     const remainingQuestions = Math.floor(cardsCount / 3)
-    
+
+    if(!roomDetails)
+    {
+        return (
+            <div>
+                <br />
+                <Button size='big' labelPosition='left'  icon color='pink' onClick={() => window.location.reload()}>
+                <Icon name='refresh' />
+                Haz click para recargar la página
+                </Button>
+            </div>
+        )
+    }
+
     return (
         <div>
-           
-           <Button size='tiny' icon color='grey' labelPosition='left' onClick={() => leaveRoom(roomName)}>
+            <Button size='tiny' icon color='grey' labelPosition='left' onClick={() => leaveRoom(roomName)}>
                 <Icon name='sign-out' />
                 Salir de {roomName}
             </Button>
+            <br />
             
-            <p>{toRoomMsg}</p>
-
             <List horizontal size="large"> 
                 {roomDetails && roomDetails.clients.map((item, key) =>    
                     

@@ -35,7 +35,6 @@ const Home = () => {
             
             appendMessage(JSON.stringify(details))
             
-            
             msgs.push(JSON.stringify(details))
             setServerMsg(msgs)
 
@@ -43,23 +42,21 @@ const Home = () => {
         });
         
         socket.on('enteredRoomDetails', (details : RoomDetails) => {
-            
+            appendMessage("enteredRoomDetails" + JSON.stringify(details))
             setRoomDetails(details)
         });
 
         socket.on('remainingShuffeledCards', (reading : RoomCardReading) => {
-            
             setRoomCardReading(reading)
         });
 
         socket.on('toRoomMessage', (msg : string) => {
-            
             setToRoomMsg(msg)
         });
 
         socket.on('message', function(msg) {
             
-            appendMessage(JSON.stringify(msg))
+            appendMessage("message" + JSON.stringify(msg))
         });
 
         socket.on('connect', () => {
@@ -136,22 +133,35 @@ const Home = () => {
         )
     }
 
+    const HeaderDetails = (props: {details : ClientSocketDetails}) =>  {
+
+        const {details} = props;
+
+        return (
+            <Header as='h1'>
+                    <Header.Content>
+                    <Image centered circular  size='small' src={details.avatar} />
+                    {details.nick}
+                    </Header.Content>
+            </Header>
+        )
+    }
+
     return (
         <div>
-            <br />
-            <Header as='h1'>
-                <Header.Content>
-                <Image centered circular  size='small' src={clientSockedDetails?.avatar} />
-                {clientSockedDetails?.nick}
-                </Header.Content>
-            </Header>
-            {inRoom === false ? 
-              <RoomButtons /> : <Room leaveRoom={leaveRoom} selectCard={selectCard} roomName={inRoomName} toRoomMsg={toRoomMsg} roomDetails={roomDetails} roomCardReading={roomCardReading} /> 
-            }        
+            {clientSockedDetails && 
+                <HeaderDetails details={clientSockedDetails} />
+            }
+
+            {inRoom === false && clientSockedDetails && clientSockedDetails.id 
+                ? <RoomButtons /> 
+                : <Room leaveRoom={leaveRoom} 
+                    selectCard={selectCard} roomName={inRoomName} 
+                    toRoomMsg={toRoomMsg} roomDetails={roomDetails} 
+                    roomCardReading={roomCardReading} /> 
+            }
         </div>
     )
-    /** {JSON.stringify(roomDetails?.clients)} */
 }
 
 export {Home}
-

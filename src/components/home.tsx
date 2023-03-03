@@ -6,7 +6,7 @@ import { Button, Card, Header, Icon, Message, Image} from 'semantic-ui-react';
 import { Room } from './room';
 import { RoomCardReading, RoomDetails } from '../types/tarot-card';
 
-const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io('https://tarot-server.azurewebsites.net/');
+const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io('http://localhost:8080/');
 
 const Home = () => {
 
@@ -31,6 +31,10 @@ const Home = () => {
     useEffect(() => {
         
         const msgs = serverMsg;
+        socket.on('yourSockerId', (socketId : string) => {
+            socket.emit("getNickAvatar", socketId)
+        });
+
         socket.on('socketDetails', (details : ClientSocketDetails) => {
             
             appendMessage(JSON.stringify(details))

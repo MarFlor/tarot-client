@@ -4,6 +4,7 @@ interface ServerToClientEvents {
     noArg: () => void;
     message: (msg : any) => void;
     socketDetails: (details : ClientSocketDetails) => void;
+    yourSockerId: (sockedId : string) => void;
     enteredRoomDetails : (details : RoomDetails) => void;
     remainingShuffeledCards : (reading : RoomCardReading) => void;
     sockedDisconnected : (sockedId : string) => void;
@@ -14,6 +15,7 @@ interface ServerToClientEvents {
 
 interface ClientToServerEvents {
     userConnected: (details : ClientSocketDetails) => void;
+    getNickAvatar: (sockedId : string) => void;
     enterRoom: (roomName : string) => void;
     leaveRoom: (roomName : string) => void;
     selectCard : (roomName : string, cardId : string) => void;

@@ -8,7 +8,7 @@ const Room = (props: {leaveRoom: any; selectCard : any, roomName : string; toRoo
     const {leaveRoom,  selectCard, roomName, toRoomMsg, roomDetails, roomCardReading} = props;
 
     const cardsCount = roomCardReading?.remainingShuffeledCards ? roomCardReading?.remainingShuffeledCards.length : 0
-    const remainingQuestions = Math.floor(cardsCount / 3)
+    //const remainingQuestions = Math.floor(cardsCount / 3)
 
     if(!roomDetails)
     {
@@ -25,31 +25,35 @@ const Room = (props: {leaveRoom: any; selectCard : any, roomName : string; toRoo
 
     return (
         <div>
-            <Button size='tiny' icon color='grey' labelPosition='left' onClick={() => leaveRoom(roomName)}>
-                <Icon name='sign-out' />
-                Salir de {roomName}
-            </Button>
-            <br />
-            
             <List horizontal size="large"> 
                 {roomDetails && roomDetails.clients.map((item, key) =>    
                     
                     <List.Item key={key}>
                     <Image avatar src={item.avatar} />
                     <List.Content>
-                        <List.Header>{item.nick}</List.Header>
+                        <List.Header>{item.nick}
+                    </List.Header>
                     </List.Content>
                     </List.Item>
 
                 )}
             </List>
             
-            <Divider horizontal>
-                {remainingQuestions} de {78 / 3} preguntas
-            </Divider>
-            
             <Deck selectCard={selectCard} roomCardReading={roomCardReading} ></Deck>
             <div>{toRoomMsg}</div>
+
+            <Divider horizontal>
+                Te quedan {cardsCount} cartas 
+            </Divider>
+
+            <Button size='tiny' icon color='grey' labelPosition='left' onClick={() => leaveRoom(roomName)}>
+                <Icon name='sign-out' />
+                Salir de {roomName}
+            </Button>
+
+            <Divider horizontal>
+            Saráh Tarot © {new Date().getFullYear()}
+            </Divider>
         </div>
     )
 

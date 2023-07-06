@@ -153,7 +153,7 @@ const Home = () => {
 
     return (
         <div>
-            {clientSockedDetails && 
+            {clientSockedDetails && inRoom === false &&
                 <HeaderDetails details={clientSockedDetails} />
             }
 

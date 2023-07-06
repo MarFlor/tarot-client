@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { io, Socket } from "socket.io-client";
-import { ServerToClientEvents, ClientToServerEvents, ClientSocketDetails } from '../types/io-client';
+import { ServerToClientEvents, ClientToServerEvents, ClientSocketDetails, getSocketUrl } from '../types/io-client';
 
 import { Button, Card, Header, Icon, Message, Image} from 'semantic-ui-react';
 import { Room } from './room';
 import { RoomCardReading, RoomDetails } from '../types/tarot-card';
+import { BirthDate } from './birth-date-form';
 
-const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io('https://tarot-server.azurewebsites.net/');
+
+const socket_url = getSocketUrl();
+console.log(socket_url);
+const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(socket_url);
 
 const Home = () => {
 
@@ -19,7 +23,7 @@ const Home = () => {
     const [roomDetails, setRoomDetails] = useState<RoomDetails>();
 
     const [roomCardReading, setRoomCardReading] = useState<RoomCardReading>();
-    
+
     const appendMessage = (msg: string) => {
         
         const temp = document.getElementById('messagecontent');
@@ -97,6 +101,10 @@ const Home = () => {
         <div>
             <Message size='large'>Para iniciar tu lectura escoge una sala</Message>
             
+            <BirthDate></BirthDate>
+
+            <hr></hr>
+
             <Card.Group itemsPerRow={2}>
                 <Card key={1}> 
                     <Button size='massive' icon color='teal' onClick={() => enterRoom("Mercurio", socket)}>

@@ -23,3 +23,11 @@ export interface RoomCardReading {
     roomId : string;
     roomName : string;
 }
+
+export interface BirhDate {
+    year : string;
+    month : string; 
+    day : string; 
+    hour : string; 
+    minutes : string;
+}

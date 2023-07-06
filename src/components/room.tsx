@@ -1,6 +1,6 @@
 import { RoomCardReading, RoomDetails } from '../types/tarot-card';
 
-import { Button, Divider, Icon, Image, List} from 'semantic-ui-react';
+import { Button, Divider, Icon, Image, List, Loader} from 'semantic-ui-react';
 import { Deck } from './deck';
 
 const Room = (props: {leaveRoom: any; selectCard : any, roomName : string; toRoomMsg : string, roomDetails? : RoomDetails, roomCardReading? : RoomCardReading }) => {
@@ -15,6 +15,7 @@ const Room = (props: {leaveRoom: any; selectCard : any, roomName : string; toRoo
         return (
             <div>
                 <br />
+                
                 <Button size='big' labelPosition='left'  icon color='pink' onClick={() => window.location.reload()}>
                 <Icon name='refresh' />
                 Haz click para recargar la página

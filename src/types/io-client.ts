@@ -27,4 +27,23 @@ interface ClientSocketDetails {
     avatar: string;
 }
 
+declare global {
+    interface Window { 
+      socket_url: any;
+    }
+}
+
+const getSocketUrl = () => {
+
+    let socket_url = "http://localhost:8080/"
+
+    if(process.env.NODE_ENV == "production")
+    {
+        socket_url = "https://tarot-server.azurewebsites.net/";
+    }
+
+    return socket_url;
+}
+
+export {getSocketUrl}
 export type {ServerToClientEvents, ClientToServerEvents, ClientSocketDetails}

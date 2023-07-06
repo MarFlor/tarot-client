@@ -24,6 +24,11 @@
     jsonpointer "^5.0.0"
     leven "^3.1.0"
 
+"@astrodraw/astrochart@^3.0.0-rc2":
+  version "3.0.0-rc2"
+  resolved "https://registry.yarnpkg.com/@astrodraw/astrochart/-/astrochart-3.0.0-rc2.tgz#b751120a36fa3b6b6f03935ad27d3c18505035dc"
+  integrity sha512-bLbHKLP/50ivjErjp14+4aYIycA3uArs71EK5X4lbEPlbsA8j9L6v/ax67Mdn6Acr/Q6v2PktEBUhxreRjmXBQ==
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.16.0", "@babel/code-frame@^7.18.6", "@babel/code-frame@^7.8.3":
   version "7.18.6"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.18.6.tgz#3b25d38c89600baa2dcc219edfa88a74eb2c427a"
@@ -7623,6 +7628,11 @@ react-refresh@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.11.0.tgz#77198b944733f0f1f1a90e791de4541f9f074046"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
+
+react-script-tag@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-script-tag/-/react-script-tag-1.1.2.tgz#be0fa3a22dfae8165d083f6bc1ff6f9799b20d44"
+  integrity sha512-4oR9ntvGfX4igiP77vK310ru5Oa77xO7CeYB3Xi9lu0qsikpGpK1Kq1WMFocvy8U4fQFq8ovtrZS/8adfCziFw==
 
 react-scripts@5.0.1:
   version "5.0.1"

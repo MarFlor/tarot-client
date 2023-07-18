@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { io, Socket } from "socket.io-client";
 import { ServerToClientEvents, ClientToServerEvents, ClientSocketDetails } from '../types/io-client';
 
-import { Button, Card, Header, Icon, Message, Image} from 'semantic-ui-react';
+import { Button, Card, Header, Image} from 'semantic-ui-react';
 import { Room } from './room';
 import { RoomCardReading, RoomDetails } from '../types/tarot-card';
 

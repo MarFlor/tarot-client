@@ -95,41 +95,10 @@ const Home = () => {
 
         return (
         <div>
-            <Message size='large'>Para iniciar tu lectura escoge una sala</Message>
-            
-            <Card.Group itemsPerRow={2}>
+            <Card.Group itemsPerRow={1}>
                 <Card key={1}> 
                     <Button size='massive' icon color='teal' onClick={() => enterRoom("Mercurio", socket)}>
-                        <Icon name='mercury' />
-                        Mercurio
-                        </Button>
-                </Card>
-
-                <Card key={2}>
-                    <Button size='massive' icon color='yellow' onClick={() => enterRoom("Sol", socket)}>
-                        <Icon name='sun' />
-                        Sol
-                    </Button>
-                </Card>
-
-                <Card key={3}>
-                    <Button size='massive' icon color='purple' onClick={() => enterRoom("Marte", socket)}>
-                        <Icon name='mars' />
-                        Marte
-                    </Button>
-                </Card>
-
-                <Card key={4}>
-                    <Button size='massive' icon color='pink' onClick={() => enterRoom("Venus", socket)}>
-                        <Icon name='venus' />
-                        Venus
-                    </Button>
-                </Card>
-
-                <Card key={5}>
-                    <Button size='massive' icon color='grey' onClick={() => enterRoom("Luna", socket)}>
-                        <Icon name='moon' />
-                        Luna
+                        Haz click para iniciar tu lectura
                     </Button>
                 </Card>
             </Card.Group>

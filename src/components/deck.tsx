@@ -9,8 +9,13 @@ const Deck = (props: { selectCard : any, roomCardReading? : RoomCardReading }) =
         <div>
             <Card.Group itemsPerRow={3}>            
 
-                {roomCardReading && roomCardReading.seletectedCardsInBoard && roomCardReading.seletectedCardsInBoard.map((item, key) =>    
-                    <Card key={key} image={item.picUrl}></Card>
+                {roomCardReading && roomCardReading.seletectedCardsInBoard && 
+                roomCardReading.seletectedCardsInBoard.map((item, key) =>  {
+                    
+                    return <Card key={key} image={item.picUrl}></Card>
+                }  
+                    
+                    
                 )}
 
             </Card.Group>

@@ -25,30 +25,35 @@ const Room = (props: {leaveRoom: any; selectCard : any, roomName : string; toRoo
 
     return (
         <div>
+            
+
             <List horizontal size="large"> 
                 {roomDetails && roomDetails.clients.map((item, key) =>    
                     
                     <List.Item key={key}>
-                    <Image avatar src={item.avatar} />
-                    <List.Content>
-                        <List.Header>{item.nick}
-                    </List.Header>
-                    </List.Content>
+                        <Image avatar src={item.avatar} />
+                        <List.Content>
+                            <List.Header>{item.nick}
+                        </List.Header>
+                        </List.Content>
                     </List.Item>
-
                 )}
             </List>
             
-            <Deck selectCard={selectCard} roomCardReading={roomCardReading} ></Deck>
-            <div>{toRoomMsg}</div>
-
             <Divider horizontal>
                 Te quedan {cardsCount} cartas 
             </Divider>
 
+            <Deck selectCard={selectCard} roomCardReading={roomCardReading} ></Deck>
+            <div>{toRoomMsg}</div>
+
+            <Divider horizontal>
+                
+            </Divider>
+
             <Button size='tiny' icon color='grey' labelPosition='left' onClick={() => leaveRoom(roomName)}>
                 <Icon name='sign-out' />
-                Salir de {roomName}
+                Salir {/* roomName */}
             </Button>
 
             <Divider horizontal>

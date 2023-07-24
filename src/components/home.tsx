@@ -97,7 +97,7 @@ const Home = () => {
         <div>
             <Card.Group itemsPerRow={1}>
                 <Card key={1}> 
-                    <Button size='massive' icon color='teal' onClick={() => enterRoom("Mercurio", socket)}>
+                    <Button size='massive' icon color='yellow' onClick={() => enterRoom("Mercurio", socket)}>
                         Haz click para iniciar tu lectura
                     </Button>
                 </Card>

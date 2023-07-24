@@ -1,6 +1,6 @@
 import { RoomCardReading, RoomDetails } from '../types/tarot-card';
 
-import { Button, Divider, Icon, Image, List} from 'semantic-ui-react';
+import { Button, Dimmer, Divider, Icon, Image, List, Loader} from 'semantic-ui-react';
 import { Deck } from './deck';
 
 const Room = (props: {leaveRoom: any; selectCard : any, roomName : string; toRoomMsg : string, roomDetails? : RoomDetails, roomCardReading? : RoomCardReading }) => {
@@ -15,10 +15,11 @@ const Room = (props: {leaveRoom: any; selectCard : any, roomName : string; toRoo
         return (
             <div>
                 <br />
-                <Button size='big' labelPosition='left'  icon color='pink' onClick={() => window.location.reload()}>
-                <Icon name='refresh' />
-                Haz click para recargar la página
-                </Button>
+                <Dimmer active inverted>
+                    <Loader size='large'>
+                        <Image size='large' avatar src='img/avatar-default.png'></Image>
+                    </Loader>
+                </Dimmer>
             </div>
         )
     }
@@ -47,18 +48,14 @@ const Room = (props: {leaveRoom: any; selectCard : any, roomName : string; toRoo
             <Deck selectCard={selectCard} roomCardReading={roomCardReading} ></Deck>
             <div>{toRoomMsg}</div>
 
-            <Divider horizontal>
+            <Divider horizontal />
                 
-            </Divider>
-
             <Button size='tiny' icon color='grey' labelPosition='left' onClick={() => leaveRoom(roomName)}>
                 <Icon name='sign-out' />
                 Salir {/* roomName */}
             </Button>
 
-            <Divider horizontal>
-            Saráh Tarot © {new Date().getFullYear()}
-            </Divider>
+            
         </div>
     )
 

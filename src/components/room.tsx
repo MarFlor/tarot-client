@@ -50,7 +50,7 @@ const Room = (props: {leaveRoom: any; selectCard : any, roomName : string; toRoo
 
             <Divider horizontal />
                 
-            <Button size='tiny' icon color='teal' className='tarotmagenta' labelPosition='left' onClick={() => leaveRoom(roomName)}>
+            <Button size='tiny' icon color='grey' labelPosition='left' onClick={() => leaveRoom(roomName)}>
                 <Icon name='sign-out' />
                 Salir {/* roomName */}
             </Button>

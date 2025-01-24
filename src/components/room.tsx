@@ -1,6 +1,6 @@
 import { RoomCardReading, RoomDetails } from '../types/tarot-card';
 
-import { Button, Dimmer, Divider, Icon, Image, List, Loader} from 'semantic-ui-react';
+import { Button, Dimmer, Divider, Icon, List, Loader} from 'semantic-ui-react';
 import { Deck } from './deck';
 
 const Room = (props: {leaveRoom: any; selectCard : any, roomName : string; toRoomMsg : string, roomDetails? : RoomDetails, roomCardReading? : RoomCardReading }) => {
@@ -17,7 +17,7 @@ const Room = (props: {leaveRoom: any; selectCard : any, roomName : string; toRoo
                 <br />
                 <Dimmer active inverted>
                     <Loader size='large'>
-                        <img src='img/avatar-default.png' />
+                        <img alt='' src='img/avatar-default.png' />
                     </Loader>
                 </Dimmer>
             </div>
@@ -32,7 +32,7 @@ const Room = (props: {leaveRoom: any; selectCard : any, roomName : string; toRoo
                 {roomDetails && roomDetails.clients.map((item, key) =>    
                     
                     <List.Item key={key}>
-                        <img src={item.avatar} />
+                        <img alt='' src={item.avatar} />
                         <List.Content>
                             <List.Header>{item.nick}
                         </List.Header>

@@ -113,7 +113,7 @@ const Home = () => {
         return (
             <Header as='h1'>
                     <Header.Content>
-                    <Image centered circular  size='small' src={details.avatar} />
+                    <img src={details.avatar} />
                     {details.nick}
                     </Header.Content>
             </Header>

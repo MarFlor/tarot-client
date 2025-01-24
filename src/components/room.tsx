@@ -17,7 +17,7 @@ const Room = (props: {leaveRoom: any; selectCard : any, roomName : string; toRoo
                 <br />
                 <Dimmer active inverted>
                     <Loader size='large'>
-                        <Image size='large' avatar src='img/avatar-default.png'></Image>
+                        <img src='img/avatar-default.png' />
                     </Loader>
                 </Dimmer>
             </div>
@@ -32,7 +32,7 @@ const Room = (props: {leaveRoom: any; selectCard : any, roomName : string; toRoo
                 {roomDetails && roomDetails.clients.map((item, key) =>    
                     
                     <List.Item key={key}>
-                        <Image avatar src={item.avatar} />
+                        <img src={item.avatar} />
                         <List.Content>
                             <List.Header>{item.nick}
                         </List.Header>
